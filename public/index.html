@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Speaking Assessment Report</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-content">
+        <div class="logo">
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+            <circle cx="20" cy="20" r="20" fill="white" fill-opacity="0.2"/>
+            <path d="M20 8C13.4 8 8 13.4 8 20s5.4 12 12 12 12-5.4 12-12S26.6 8 20 8zm0 22c-5.5 0-10-4.5-10-10s4.5-10 10-10 10 4.5 10 10-4.5 10-10 10zm-1-15h2v6h-2zm0 8h2v2h-2z" fill="white"/>
+          </svg>
+          <span>Speaking Assessment</span>
+        </div>
+        <h1>Assessment Report</h1>
+      </div>
+    </header>
+
+    <!-- Student Info Bar -->
+    <div class="student-bar">
+      <div class="student-detail">
+        <span class="label">Student</span>
+        <span class="value" id="studentName">Loading...</span>
+      </div>
+      <div class="student-detail">
+        <span class="label">Test Date</span>
+        <span class="value" id="testDate">Loading...</span>
+      </div>
+      <div class="student-detail">
+        <span class="label">Test Type</span>
+        <span class="value" id="testType">Speaking Assessment</span>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Summary of Scores Section -->
+      <section class="section scores-section">
+        <h2 class="section-title">Summary of Scores</h2>
+
+        <div class="scores-grid">
+          <!-- Overall Score Card -->
+          <div class="overall-card">
+            <div class="overall-score-wrapper">
+              <div class="overall-score-ring" id="overallScoreRing">
+                <svg viewBox="0 0 120 120">
+                  <circle class="ring-bg" cx="60" cy="60" r="54"/>
+                  <circle class="ring-progress" cx="60" cy="60" r="54" id="overallRingProgress"/>
+                </svg>
+                <div class="overall-score-content">
+                  <span class="score-number" id="overallScore">-</span>
+                  <span class="score-total">/ 9</span>
+                </div>
+              </div>
+              <div class="overall-label">Overall Score</div>
+              <div class="score-band" id="overallBand">-</div>
+            </div>
+
+            <!-- CEFR Level -->
+            <div class="cefr-container">
+              <div class="cefr-badge" id="cefrBadge">
+                <span class="cefr-level" id="cefrLevel">-</span>
+              </div>
+              <div class="cefr-info">
+                <span class="cefr-name" id="cefrName">Loading...</span>
+                <span class="cefr-desc" id="cefrDesc">Loading...</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Skills Breakdown -->
+          <div class="skills-card">
+            <h3>Skills Breakdown</h3>
+
+            <div class="skills-grid">
+              <!-- Pronunciation -->
+              <div class="skill-circle-item">
+                <div class="skill-ring" data-skill="pronunciation">
+                  <svg viewBox="0 0 80 80">
+                    <circle class="ring-bg" cx="40" cy="40" r="36"/>
+                    <circle class="ring-progress" cx="40" cy="40" r="36" id="pronunciationRing"/>
+                  </svg>
+                  <div class="skill-score-content">
+                    <span class="skill-score-number" id="pronunciationScore">-</span>
+                  </div>
+                </div>
+                <span class="skill-label">Pronunciation</span>
+                <span class="skill-band" id="pronunciationBand">-</span>
+              </div>
+
+              <!-- Fluency -->
+              <div class="skill-circle-item">
+                <div class="skill-ring" data-skill="fluency">
+                  <svg viewBox="0 0 80 80">
+                    <circle class="ring-bg" cx="40" cy="40" r="36"/>
+                    <circle class="ring-progress" cx="40" cy="40" r="36" id="fluencyRing"/>
+                  </svg>
+                  <div class="skill-score-content">
+                    <span class="skill-score-number" id="fluencyScore">-</span>
+                  </div>
+                </div>
+                <span class="skill-label">Fluency</span>
+                <span class="skill-band" id="fluencyBand">-</span>
+              </div>
+
+              <!-- Vocabulary -->
+              <div class="skill-circle-item">
+                <div class="skill-ring" data-skill="vocabulary">
+                  <svg viewBox="0 0 80 80">
+                    <circle class="ring-bg" cx="40" cy="40" r="36"/>
+                    <circle class="ring-progress" cx="40" cy="40" r="36" id="vocabularyRing"/>
+                  </svg>
+                  <div class="skill-score-content">
+                    <span class="skill-score-number" id="vocabularyScore">-</span>
+                  </div>
+                </div>
+                <span class="skill-label">Vocabulary</span>
+                <span class="skill-band" id="vocabularyBand">-</span>
+              </div>
+
+              <!-- Grammar -->
+              <div class="skill-circle-item">
+                <div class="skill-ring" data-skill="grammar">
+                  <svg viewBox="0 0 80 80">
+                    <circle class="ring-bg" cx="40" cy="40" r="36"/>
+                    <circle class="ring-progress" cx="40" cy="40" r="36" id="grammarRing"/>
+                  </svg>
+                  <div class="skill-score-content">
+                    <span class="skill-score-number" id="grammarScore">-</span>
+                  </div>
+                </div>
+                <span class="skill-label">Grammar</span>
+                <span class="skill-band" id="grammarBand">-</span>
+              </div>
+            </div>
+
+            <!-- Radar Chart -->
+            <div class="chart-wrapper">
+              <canvas id="skillsChart"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Score Scale Reference -->
+        <div class="score-scale">
+          <h4>Score Scale</h4>
+          <div class="scale-items">
+            <div class="scale-item">
+              <span class="scale-color" style="background: #00c853;"></span>
+              <span>8.5-9: Expert</span>
+            </div>
+            <div class="scale-item">
+              <span class="scale-color" style="background: #2196f3;"></span>
+              <span>7.5-8.4: Very Good</span>
+            </div>
+            <div class="scale-item">
+              <span class="scale-color" style="background: #667eea;"></span>
+              <span>6.5-7.4: Good</span>
+            </div>
+            <div class="scale-item">
+              <span class="scale-color" style="background: #ff9800;"></span>
+              <span>5.5-6.4: Competent</span>
+            </div>
+            <div class="scale-item">
+              <span class="scale-color" style="background: #ff5722;"></span>
+              <span>4.5-5.4: Modest</span>
+            </div>
+            <div class="scale-item">
+              <span class="scale-color" style="background: #f44336;"></span>
+              <span>0-4.4: Limited</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Descriptive Feedback Section -->
+      <section class="section feedback-section">
+        <h2 class="section-title">Descriptive Feedback</h2>
+
+        <!-- Overall Feedback -->
+        <div class="feedback-card overall-feedback">
+          <div class="feedback-header">
+            <div class="feedback-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                <path d="M2 17l10 5 10-5"/>
+                <path d="M2 12l10 5 10-5"/>
+              </svg>
+            </div>
+            <h3>Overall Assessment</h3>
+            <span class="feedback-badge" id="overallFeedbackBadge">-</span>
+          </div>
+          <p id="overallFeedbackText">Loading...</p>
+        </div>
+
+        <!-- Skill Feedback Grid -->
+        <div class="feedback-grid">
+          <div class="feedback-card" id="pronunciationFeedbackCard">
+            <div class="feedback-header">
+              <div class="feedback-icon pronunciation-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+                  <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                  <line x1="12" y1="19" x2="12" y2="23"/>
+                  <line x1="8" y1="23" x2="16" y2="23"/>
+                </svg>
+              </div>
+              <h3>Pronunciation</h3>
+              <span class="feedback-score" id="pronunciationFeedbackScore">-</span>
+            </div>
+            <p id="pronunciationFeedback">Loading...</p>
+          </div>
+
+          <div class="feedback-card" id="fluencyFeedbackCard">
+            <div class="feedback-header">
+              <div class="feedback-icon fluency-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+                </svg>
+              </div>
+              <h3>Fluency</h3>
+              <span class="feedback-score" id="fluencyFeedbackScore">-</span>
+            </div>
+            <p id="fluencyFeedback">Loading...</p>
+          </div>
+
+          <div class="feedback-card" id="vocabularyFeedbackCard">
+            <div class="feedback-header">
+              <div class="feedback-icon vocabulary-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                  <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                </svg>
+              </div>
+              <h3>Vocabulary</h3>
+              <span class="feedback-score" id="vocabularyFeedbackScore">-</span>
+            </div>
+            <p id="vocabularyFeedback">Loading...</p>
+          </div>
+
+          <div class="feedback-card" id="grammarFeedbackCard">
+            <div class="feedback-header">
+              <div class="feedback-icon grammar-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="4 7 4 4 20 4 20 7"/>
+                  <line x1="9" y1="20" x2="15" y2="20"/>
+                  <line x1="12" y1="4" x2="12" y2="20"/>
+                </svg>
+              </div>
+              <h3>Grammar</h3>
+              <span class="feedback-score" id="grammarFeedbackScore">-</span>
+            </div>
+            <p id="grammarFeedback">Loading...</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>Speaking Assessment Report | Generated on <span id="generatedDate"></span></p>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

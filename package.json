@@ -1,0 +1,14 @@
+{
+  "name": "student-assessment-report",
+  "version": "1.0.0",
+  "description": "Student Speaking Assessment Report Page",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5"
+  }
+}

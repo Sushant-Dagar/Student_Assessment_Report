@@ -1,0 +1,16 @@
+{
+  "student": {
+    "id": "STU001",
+    "name": "Sushant",
+    "testDate": "2025-12-26",
+    "testType": "Speaking Assessment"
+  },
+  "scores": {
+    "overall": 7,
+    "pronunciation": 7.5,
+    "fluency": 6.5,
+    "vocabulary": 7,
+    "grammar": 7
+  },
+  "maxScore": 9
+}

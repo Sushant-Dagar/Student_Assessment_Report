@@ -2,6 +2,8 @@
 
 A full-stack application that displays a student's speaking assessment report with scores, CEFR level mapping, and descriptive feedback - similar to platforms like SpeechAce / IELTS score reports.
 
+**Live Demo:** https://student-assessment-report-one.vercel.app
+
 ## Features
 
 - **Overall Score Display**: Animated circular progress ring showing score out of 9
@@ -32,6 +34,7 @@ A full-stack application that displays a student's speaking assessment report wi
 GemaEdu/
 ├── server.js              # Express server with API endpoint & feedback logic
 ├── package.json           # Project dependencies
+├── vercel.json            # Vercel deployment configuration
 ├── data/
 │   └── studentData.json   # Student scores data storage
 ├── public/
